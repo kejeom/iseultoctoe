@@ -11,7 +11,7 @@ Project Introduction
 
 * Target Development Language : python
 * Project development environment : pygame(python module), pycharm(compiler), GitHub
-* Project Source(Base model) : 'ai-creator <https://ai-creator.tistory.com/528?category=807420>'
+* Project Source(Base model) : ai-creator https://ai-creator.tistory.com/528?category=807420
 
 Features List
 -------------

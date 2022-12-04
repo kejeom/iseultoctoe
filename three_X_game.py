@@ -46,8 +46,8 @@ turn = 0
 def runGame():
     #게임 활용 변수
     CELL_SIZE = 60
-    COLUMN_COUNT = 3
-    ROW_COUNT = 3
+    COLUMN_COUNT = 4
+    ROW_COUNT = 4
     X_WIN = 1
     O_WIN = 2
     DRAW = 3
@@ -63,7 +63,7 @@ def runGame():
                 if turn == 0:
                     column_index = event.pos[0] // CELL_SIZE
                     row_index = event.pos[1] // CELL_SIZE
-                    position = column_index + 3 * row_index
+                    position = column_index + 4 * row_index
                     if is_valid_position(grid, position):
                         grid[position] = 'X'
                         if is_winner(grid, 'X'):
@@ -79,7 +79,7 @@ def runGame():
                 else:       
                     column_index = event.pos[0] // CELL_SIZE
                     row_index = event.pos[1] // CELL_SIZE
-                    position = column_index + 3 * row_index
+                    position = column_index + 4 * row_index
                     if is_valid_position(grid, position):
                         grid[position] = 'O'   
                         if is_winner(grid, 'O'):

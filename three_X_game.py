@@ -10,9 +10,10 @@ small_font = pygame.font.SysFont(None, 36)
 size = [600,600]
 screen = pygame.display.set_mode(size)
 turn = 0 
-grid = [' ', ' ', ' ', 
-        ' ', ' ', ' ', 
-        ' ', ' ', ' ']
+grid = [' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ',
+        ' ', ' ', ' ', ' ']
 done = False
 clock = pygame.time.Clock()
 def is_valid_position(grid, position):
@@ -21,14 +22,16 @@ def is_valid_position(grid, position):
     else:
         return False
 def is_winner(grid, mark):
-    if (grid[0] == mark and grid[1] == mark and grid[2] == mark) or \
-        (grid[3] == mark and grid[4] == mark and grid[5] == mark) or \
-        (grid[6] == mark and grid[7] == mark and grid[8] == mark) or \
-        (grid[0] == mark and grid[3] == mark and grid[6] == mark) or \
-        (grid[1] == mark and grid[4] == mark and grid[7] == mark) or \
-        (grid[2] == mark and grid[5] == mark and grid[8] == mark) or \
-        (grid[0] == mark and grid[4] == mark and grid[8] == mark) or \
-        (grid[2] == mark and grid[4] == mark and grid[6] == mark):
+    if (grid[0] == mark and grid[1] == mark and grid[2] == mark and grid[3] == mark) or \
+        (grid[4] == mark and grid[5] == mark and grid[6] == mark and grid[7] == mark) or \
+        (grid[8] == mark and grid[9] == mark and grid[10] == mark and grid[11] == mark) or \
+        (grid[12] == mark and grid[13] == mark and grid[14] == mark and grid[15] == mark) or \
+        (grid[0] == mark and grid[4] == mark and grid[8] == mark and grid[12] == mark) or \
+        (grid[1] == mark and grid[5] == mark and grid[9] == mark and grid[13] == mark) or \
+        (grid[2] == mark and grid[6] == mark and grid[10] == mark and grid[14] == mark) or \
+        (grid[3] == mark and grid[7] == mark and grid[11] == mark and grid[15] == mark) or \
+        (grid[0] == mark and grid[5] == mark and grid[10] == mark and grid[15] == mark) or \
+        (grid[3] == mark and grid[6] == mark and grid[9] == mark and grid[12] == mark):
         return True
     else:
         return False
@@ -96,7 +99,7 @@ def runGame():
                     pygame.draw.rect(screen, WHITE, rect, 1)
             for column_index in range(COLUMN_COUNT):
                 for row_index in range(ROW_COUNT):
-                    position = column_index + 3 * row_index
+                    position = column_index + 4 * row_index
                     mark = grid[position]
                     if mark == 'X':
                         X_image = small_font.render('{}'.format('X'), True, YELLOW)

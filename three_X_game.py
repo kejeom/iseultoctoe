@@ -3,10 +3,8 @@ pygame.init() # 2. pygame 초기화
 # 3. pygame에 사용되는 전역변수 선언
 WHITE = (255,255,255)
 BLACK = (0, 0, 0)
-YELLOW = (255, 255, 0)
 RED = (255, 0, 0)
 
-Corn_silk = (255, 248, 220) #white
 Alice_Blue = (240, 248, 255) #white
 Light_turquoise = (224, 255, 255) #YELLOW
 
@@ -60,7 +58,7 @@ def runGame():
     global done, turn, grid
     while not done:
         clock.tick(30)
-        screen.fill(WHITE)
+        screen.fill(BLACK)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done=True
@@ -101,7 +99,7 @@ def runGame():
             for column_index in range(COLUMN_COUNT):
                 for row_index in range(ROW_COUNT):
                     rect = (CELL_SIZE * column_index, CELL_SIZE * row_index, CELL_SIZE, CELL_SIZE)
-                    pygame.draw.rect(screen, Corn_silk, rect, 1)
+                    pygame.draw.rect(screen, WHITE, rect, 1)
             for column_index in range(COLUMN_COUNT):
                 for row_index in range(ROW_COUNT):
                     position = column_index + 4 * row_index

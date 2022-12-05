@@ -5,6 +5,11 @@ WHITE = (255,255,255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 RED = (255, 0, 0)
+
+Corn_silk = (255, 248, 220) #white
+Alice_Blue = (240, 248, 255) #white
+Light_turquoise = (224, 255, 255) #YELLOW
+
 large_font = pygame.font.SysFont(None, 72)
 small_font = pygame.font.SysFont(None, 36)
 size = [600,600]
@@ -45,7 +50,7 @@ def is_grid_full(grid):
 turn = 0 
 def runGame():
     #게임 활용 변수
-    CELL_SIZE = 60
+    CELL_SIZE = 100
     COLUMN_COUNT = 4
     ROW_COUNT = 4
     X_WIN = 1
@@ -55,7 +60,7 @@ def runGame():
     global done, turn, grid
     while not done:
         clock.tick(30)
-        screen.fill(BLACK)
+        screen.fill(WHITE)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done=True
@@ -96,16 +101,16 @@ def runGame():
             for column_index in range(COLUMN_COUNT):
                 for row_index in range(ROW_COUNT):
                     rect = (CELL_SIZE * column_index, CELL_SIZE * row_index, CELL_SIZE, CELL_SIZE)
-                    pygame.draw.rect(screen, WHITE, rect, 1)
+                    pygame.draw.rect(screen, Corn_silk, rect, 1)
             for column_index in range(COLUMN_COUNT):
                 for row_index in range(ROW_COUNT):
                     position = column_index + 4 * row_index
                     mark = grid[position]
                     if mark == 'X':
-                        X_image = small_font.render('{}'.format('X'), True, YELLOW)
+                        X_image = small_font.render('{}'.format('X'), True, Light_turquoise)
                         screen.blit(X_image, (CELL_SIZE * column_index + 10, CELL_SIZE * row_index + 10)) 
                     elif mark == 'O':
-                        O_image = small_font.render('{}'.format('O'), True, WHITE)
+                        O_image = small_font.render('{}'.format('O'), True, Alice_Blue)
                         screen.blit(O_image, (CELL_SIZE * column_index + 10, CELL_SIZE * row_index + 10)) 
             if not game_over: 
                 pass

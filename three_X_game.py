@@ -6,7 +6,7 @@ current_path = os.path.dirname(__file__)
 # 이미지 폴더 위치 정의
 image_path = os.path.join(current_path, "images")
 # 불러올 이미지 로드
-background = pygame.image.load(os.path.join(image_path, "background.png"))
+background = pygame.image.load(os.path.join(image_path, "background.jpg"))
 
 pygame.init()  # 2. pygame 초기화
 # 3. pygame에 사용되는 전역변수 선언
@@ -14,13 +14,11 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 YELLOW = (255, 255, 0)
 RED = (255, 0, 0)
-
-Corn_silk = (255, 248, 220)  # white
-Alice_Blue = (240, 248, 255)  # white
+PALEYELLOW = (255, 255, 153)  # white
 Light_turquoise = (224, 255, 255)  # YELLOW
 
-large_font = pygame.font.SysFont(None, 72)
-small_font = pygame.font.SysFont(None, 36)
+large_font = pygame.font.SysFont(None, 100)
+small_font = pygame.font.SysFont(None, 100)
 size = [600, 550]
 screen = pygame.display.set_mode(size)
 turn = 0
@@ -76,6 +74,7 @@ def runGame():
     O_WIN = 2
     DRAW = 3
     game_over = 0
+    count=0
     global done, turn, grid
     while not done:
         clock.tick(30)
@@ -93,11 +92,13 @@ def runGame():
                         if is_winner(grid, 'X'):
                             print('X 가 이겼습니다.')
                             game_over = X_WIN
-                            # break
+                            count=1
+                            break
                         elif is_grid_full(grid):
                             print('무승부 입니다.')
                             game_over = DRAW
-                            # break
+                            count=1
+                            break
                         turn += 1
                         turn = turn % 2
                 else:
@@ -109,18 +110,20 @@ def runGame():
                         if is_winner(grid, 'O'):
                             print('O 가 이겼습니다.')
                             game_over = O_WIN
-                            # break
+                            count=1
+                            break
                         elif is_grid_full(grid):
                             print('무승부 입니다.')
                             game_over = DRAW
-                            # break
+                            count=1
+                            break
                         turn += 1
                         turn = turn % 2
             # 화면 그리기
             for column_index in range(COLUMN_COUNT):
                 for row_index in range(ROW_COUNT):
                     rect = (CELL_SIZE * column_index, CELL_SIZE * row_index, CELL_SIZE, CELL_SIZE)
-                    pygame.draw.rect(screen, Corn_silk, rect, 1)
+                    pygame.draw.rect(screen, WHITE, rect, 1)
             for column_index in range(COLUMN_COUNT):
                 for row_index in range(ROW_COUNT):
                     position = column_index + 4 * row_index
@@ -129,8 +132,18 @@ def runGame():
                         X_image = small_font.render('{}'.format('X'), True, Light_turquoise)
                         screen.blit(X_image, (CELL_SIZE * column_index + 10, CELL_SIZE * row_index + 10))
                     elif mark == 'O':
-                        O_image = small_font.render('{}'.format('O'), True, Alice_Blue)
+                        O_image = small_font.render('{}'.format('O'), True, PALEYELLOW)
                         screen.blit(O_image, (CELL_SIZE * column_index + 10, CELL_SIZE * row_index + 10))
+                    if (turn==0):
+                        O_turn=large_font.render('O', True, BLACK)
+                        screen.blit(O_turn,(500,40))
+                        X_turn=large_font.render('X', True, RED)
+                        screen.blit(X_turn,(500,40))
+                    elif (turn==1):
+                        X_turn=large_font.render('X', True, BLACK)
+                        screen.blit(X_turn,(500,40))
+                        O_turn=large_font.render('O', True, RED)
+                        screen.blit(O_turn,(500,40))
             if not game_over:
                 pass
             else:
@@ -143,7 +156,8 @@ def runGame():
                 screen.blit(game_over_image,
                             (600 // 2 - game_over_image.get_width() // 2, 600 // 2 - game_over_image.get_height() // 2))
             pygame.display.update()  # 모든 화면 그리기 업데이트
-
+            if count==1:
+                pygame.quit()
 
 runGame()
 pygame.quit()

@@ -36,12 +36,11 @@ Features List
 * various color
 * to express ‘who’s turn’
 
-Responsibility of each team member
-----------------------------------
+Getting Started: Installation
+=============================
 
-* 19013224 Imgyeom Kim : He chose a topic and found the game code. He also found the deficiencies in the game and gave an opinion on what to modify.
-* 21010470 Hyejin Park : She chose a topic and found the game code. She also found the deficiencies in the game and gave an opinion on what to modify.
-* 21011842 Hyunjeong Jin : She chose a topic and found the game code. She also found the deficiencies in the game and gave an opinion on what to modify.
+The Python must be installed first. Then check the version of Python in the command prompt(”python --version”), and install 'pygame'("pip install pygame").
+Run Python in the command prompt to verify that pygame has been successfully installed. Then, enter "import pygame" to check the installation. Finally, to start the game, you must enter our code in Python. And when you run it, the game starts.
 
 ## License
 
